@@ -77,16 +77,7 @@ const nextAuthOptions: NextAuthOptions = {
     pages: {
         signIn: '/'
     },
-    callbacks: {
-        async jwt({ token, user }) {
-            user && (token.user = user)
-            return token
-        },
-        async session({ session, token }){
-            session = token.user as any
-            return session
-        }
-    }
+    
 }
 
 const handler = NextAuth(nextAuthOptions)
