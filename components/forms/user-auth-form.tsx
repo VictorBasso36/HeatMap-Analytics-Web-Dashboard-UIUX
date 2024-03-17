@@ -22,6 +22,7 @@ const formSchema = z.object({
   email: z.string().email({ message: "Enter a valid email address" }),
   password: z.string().min(8, { message: "Password must be at least 8 characters long" }),
 });
+import crypto from 'crypto';
 
 type UserFormValue = z.infer<typeof formSchema>;
 
@@ -39,7 +40,7 @@ export default function UserAuthForm() {
   });
 
   const onSubmit = async (data: UserFormValue) => {
-    signIn("cognito", {
+    signIn("credentials", {
       email: data.email,
       password: data.password,
       callbackUrl:  callbackUrl ?? "/dashboard",
