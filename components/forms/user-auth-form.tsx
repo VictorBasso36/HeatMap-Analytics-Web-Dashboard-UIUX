@@ -33,8 +33,8 @@ export default function UserAuthForm() {
 
   const router = useRouter();
   const defaultValues = {
-    email: "demo@gmail.com",
-    password: "12345678",
+    email: "demo@demo.com.br",
+    password: "12345678Demo!",
   };
   const form = useForm<UserFormValue>({
     resolver: zodResolver(formSchema),

@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken';
 
 // Configuração da região da AWS
 const AWS = require('aws-sdk');
-AWS.config.update({region: 'sa-east-1'}); // Substitua 'sa-east-1' pela sua região da AWS
+AWS.config.update({region: 'sa-east-1'}); 
 
 
 function calculateSecretHash(username: string) {
