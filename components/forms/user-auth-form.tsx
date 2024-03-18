@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import React from "react";
@@ -30,6 +30,8 @@ export default function UserAuthForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
   const defaultValues = {
     email: "demo@gmail.com",
     password: "12345678",
@@ -40,12 +42,22 @@ export default function UserAuthForm() {
   });
 
   const onSubmit = async (data: UserFormValue) => {
-    signIn("credentials", {
+    const result = await signIn("credentials", {
       email: data.email,
       password: data.password,
       callbackUrl:  callbackUrl ?? "/dashboard",
+      redirect: false
     });
+
+    if(result?.error){
+      console.log(result)
+      return
+    }
     
+    router.replace('/dashboard')
+
+
+
   };
 
   return (
