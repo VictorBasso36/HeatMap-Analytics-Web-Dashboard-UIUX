@@ -20,7 +20,7 @@ export default function GoogleSignInButton() {
         type="button"
       >
           <Icons.profile className="mr-2 h-4 w-4" />
-          Register your account
+          Crie a sua conta
       </Button>
       </a>
       <Button
@@ -34,7 +34,7 @@ export default function GoogleSignInButton() {
         }
       >
         <Icons.gitHub className="mr-2 h-4 w-4" />
-        Continue with Github
+        Continue com Github
       </Button>
       <Button
         disabled={true}
@@ -47,7 +47,7 @@ export default function GoogleSignInButton() {
         }
       >
         <Icons.logo className="mr-2 h-4 w-4" />
-        Continue with Google
+        Continue com Google
       </Button>
     </>
   );
