@@ -23,6 +23,7 @@ const formSchema = z.object({
   password: z.string().min(8, { message: "Password must be at least 8 characters long" }),
 });
 import crypto from 'crypto';
+import { set } from "date-fns";
 
 type UserFormValue = z.infer<typeof formSchema>;
 
@@ -42,6 +43,7 @@ export default function UserAuthForm() {
   });
 
   const onSubmit = async (data: UserFormValue) => {
+    setLoading(true)
     const result = await signIn("credentials", {
       email: data.email,
       password: data.password,
@@ -51,11 +53,12 @@ export default function UserAuthForm() {
 
     if(result?.error){
       console.log(result)
+      setLoading(false)
       return
     }
     
     router.replace('/dashboard')
-
+    setLoading(false)
 
 
   };
@@ -105,8 +108,22 @@ export default function UserAuthForm() {
             )}
           />
 
-          <Button disabled={loading} className="ml-auto w-full" type="submit">
-            Login
+          <Button disabled={loading}  className="ml-auto w-full" type="submit">
+           { loading ?     
+           <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+
+            >
+              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+            </svg> : 'Login' }
           </Button>
         </form>
       </Form>
