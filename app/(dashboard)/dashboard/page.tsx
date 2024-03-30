@@ -25,14 +25,14 @@ export default function page() {
             <Button>Download</Button>
           </div>
         </div>
-        <Tabs defaultValue="overview" style={{display: 'flex', flexWrap: 'wrap'}} className="space-y-4">
+        <Tabs defaultValue="overview" className="space-y-4">
           <TabsList >
             <TabsTrigger value="overview">Dados🤓</TabsTrigger>
             <TabsTrigger value="HeatMap">
-              HeatMap 🔥
+              HeatMap🔥
             </TabsTrigger>
             <TabsTrigger value="analytics" disabled>
-              Analytics 📊
+              Analytics📊
             </TabsTrigger>
           </TabsList>
           <TabsContent value="overview" className="space-y-4">
